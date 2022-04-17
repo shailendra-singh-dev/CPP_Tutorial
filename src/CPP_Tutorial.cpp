@@ -18,44 +18,9 @@
 
 using namespace std;
 
-void static_data_member_functions_main();
-
-int* split_integer(int num, int parts) {
-	int array[parts];
-	int *arr = array;
-	int remain = num;
-	int partsLeft = parts;
-	for (int i = 0; partsLeft > 0; i++) {
-		int size = (remain + partsLeft - 1) / partsLeft; // rounded up, aka ceiling
-		arr[i] = size;
-		remain -= size;
-		partsLeft--;
-	}
-	return arr;
-}
+void inline_functions_main();
 
 int main(int argc, char **argv) {
-	static_data_member_functions_main();
-	 return 0;
-}
 
-void split(char *s, int n) {
-//	char s[1000];
-//	int n;
-//	scanf("%s %d",s,&n);
-	int len = strlen(s);
-	int ctr = len / n;
-	if (len % n == 0) {
-		for (int i = 0; i < len; i++) {
-			if (i % ctr == 0) {
-				printf(" %c", s[i]);
-			} else {
-				printf("%c", s[i]);
-			}
-
-		}
-	} else {
-		printf("-1");
-	}
 }
 
