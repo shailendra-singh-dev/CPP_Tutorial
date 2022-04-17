@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "Cat.h"
+#include "cat.h"
 
 using namespace std;
 

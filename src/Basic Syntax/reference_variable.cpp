@@ -1,24 +1,19 @@
 //============================================================================
-// Name        : Classes.cpp
-// Author      : John Purcell
+// Name        : If.cpp
+// Author      : Shailendra
 // Version     :
 // Copyright   : Your copyright notice
 // Description : Hello World in C++, Ansi-style
 //============================================================================
 
 #include <iostream>
-#include "cat.h"
-
-
 using namespace std;
 
-int Classes_main() {
-
-	Cat cat1;
-
-	cat1.speak();
-	cat1.jump();
-
-
-	return 0;
+/**
+ * https://www.youtube.com/watch?v=NGKt3Xwlobg&list=PLk6CEY9XxSIAQ2vE_Jb4Dbmum7UfQrXgt&index=8
+ */
+void reference_variable_main() {
+	int a =10;
+	int& b = a;
+	cout << a << b<< endl;
 }
