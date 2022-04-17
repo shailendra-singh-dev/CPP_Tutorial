@@ -20,7 +20,7 @@ int Delete_This_main() {
 	// pointer is created via new keyword.
 	A* a = new A();
 	a->call_delete_this();
-	a = NULL;
+	a = nullptr;
 
 	A b;
 	b.call_delete_this();

@@ -18,7 +18,7 @@
 
 using namespace std;
 
-int Delete_This_main();
+void References_main();
 
 int* split_integer(int num, int parts) {
 	int array[parts];
@@ -35,7 +35,8 @@ int* split_integer(int num, int parts) {
 }
 
 int main(int argc, char **argv) {
-	Delete_This_main();
+	References_main();
+	 return 0;
 }
 
 void split(char *s, int n) {

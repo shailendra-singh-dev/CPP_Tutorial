@@ -10,4 +10,6 @@
 
 void modify_value(double& value);
 
+void reference_variable();
+
 #endif /* REFERENCES_H_ */
