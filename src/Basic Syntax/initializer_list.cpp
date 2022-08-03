@@ -9,6 +9,16 @@
 #include "iostream"
 using namespace std;
 
+
+/**
+ * NOTES:
+	1. Constructors And Member Initializer Lists C++
+	2. This is used to initialize data members of classes.
+
+	Two ways are there to do this.
+	1. Using {}  this is uniform initialization and should be preferred.
+    2. Using ()
+ */
 class Initializer_List {
 private:
 	int a;

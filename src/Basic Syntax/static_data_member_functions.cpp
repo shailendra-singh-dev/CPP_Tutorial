@@ -8,6 +8,13 @@
 #include <iostream>
 using namespace std;
 
+
+/**
+ * NOTES:
+	1. We can define class members static using "static" keyword.
+	2. it can access only static data members. (non-static data member can be accessed but we have to pass the object inside function)
+	3. it can access private data of class.
+ */
 class DataMember {
 public:
 	int a;
@@ -33,9 +40,10 @@ void static_data_member_functions_main() {
 	DataMember::b = 300;
 
 	member.print();
-	member.printStatic();
+	DataMember::printStatic();
+
 
 	member2.print();
-	member2.printStatic();
+	DataMember::printStatic();
 
 }

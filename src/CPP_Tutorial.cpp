@@ -18,9 +18,10 @@
 
 using namespace std;
 
-void inline_functions_main();
+void multipath_inheritance_main();
 
 int main(int argc, char **argv) {
-
+	multipath_inheritance_main();
+	return 0;
 }
 

@@ -10,6 +10,9 @@ using namespace std;
 
 /**
  * virtual and recursive functions can't be declared as inline.
+ * Inline functions in c++ are good help when the function size is very less and there are few conditions for a
+ *  function to be qualified for inline function if it passes it compiler will treat it inline function.
+    It can be placed at calling side so we don't have calling overhead of a function.
  */
 
 void print(int x){

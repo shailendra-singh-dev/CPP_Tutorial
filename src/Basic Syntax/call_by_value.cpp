@@ -5,7 +5,10 @@
  *      Author: ssingh42
  */
 
-
+/*
+ * So when we call function by reference then we can change the value of passed parameters.
+ * it is similar to called by pointers but call by reference is less tedious then pointer.
+ */
 #include <iostream>
 using namespace std;
 
