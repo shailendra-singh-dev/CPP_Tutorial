@@ -10,12 +10,11 @@
 #include <iostream>
 using namespace std;
 
-bool isEdge(int N);
-bool isAdjacent(int N);
+void uniform_initialization_main();
 
 
 int main(int argc, char **argv) {
-	cout << isEdge(3) << endl;
+	uniform_initialization_main();
 	return 0;
 }
 
