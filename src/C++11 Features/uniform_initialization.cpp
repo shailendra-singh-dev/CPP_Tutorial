@@ -7,6 +7,11 @@
 
 /**
  * https://www.geeksforgeeks.org/uniform-initialization-in-c/
+ *
+ * Uniform initialization is a feature in C++ 11 that allows the usage of a consistent syntax to initialize
+ * variables and objects ranging from primitive type to aggregates.
+ * In other words, it introduces brace-initialization that uses braces ({}) to enclose initializer values. The syntax is as follows:
+   type var_name{arg1, arg2, ....arg n}
  */
 
 #include <iostream>
