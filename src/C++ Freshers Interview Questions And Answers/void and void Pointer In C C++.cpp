@@ -30,10 +30,11 @@ TOPIC: void*
 **/
 #include <iostream>
 void fun() {}
+using namespace std;
 
 int main() {
 
-	int *i = new int(10);
-	void *v = static_cast<void*>(i);
+	int* i = new int(10);
+	void* v = static_cast<void*>(i);
 	cout << *v << endl;
 }

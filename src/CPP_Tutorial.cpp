@@ -8,7 +8,10 @@
 
 #include "vector"
 #include <iostream>
+#include <functional>
+
 using namespace std;
+
 
 class A {
 private:
@@ -35,6 +38,45 @@ public:
 
 void accessX(A& a){
 	cout << a.x << endl;
+
+struct Sample {
+	int operator()(int x) {
+		return x;
+	}
+} sample;
+
+class MyFunctor {
+public:
+	int operator()(int x) {
+		return x;
+	}
+};
+
+auto add = [](int a, int b) {
+	return a + b;
+};
+
+
+
+int main(int argc, char **argv) {
+	/**
+	 int val = sample(10);
+	 cout << val << endl;
+
+	 MyFunctor myFunctor;
+	 int value = myFunctor(20);
+	 cout << value << endl;
+	 int c =10;
+	 //lambda functions	https://stackoverflow.com/questions/356950/what-are-c-functors-and-their-uses
+	 auto add = [c](int a, int b){
+	 return a+b+c;
+	 };
+	 cout << add(10,20) << endl;
+
+	 **/
+
+	return 0;
+
 }
 
 class StreamInsertion {
@@ -49,7 +91,4 @@ int value;
   }
   
 }
-int main(int argc, char **argv) {
-	StaticClass::print();		
-	return 0;
-}
+

@@ -7,6 +7,7 @@
 
 /**
  * https://www.youtube.com/watch?v=W3kpFSbkqQ8&list=PLk6CEY9XxSIAQ2vE_Jb4Dbmum7UfQrXgt&index=62
+ * https://www.geeksforgeeks.org/cpp/cpp-inheritance-access/
  *
  * TYPES OF INHERITANCE:
  1. Single
