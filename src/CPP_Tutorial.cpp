@@ -10,46 +10,46 @@
 #include <iostream>
 using namespace std;
 
-void uniform_initialization_main();
+class A {
+private:
+	int x;
+public:
+	A(int x):x{x}{
+	}
+	int getX(){
+		return x;
+	}
+	friend void accessX(A& a);
+	friend class B;
+	A getObj(){
+		return {10000};
+	}	
+};
 
+class B{
+public:
+	int getX(A& a){
+		return a.x;
+	}
+};
 
+void accessX(A& a){
+	cout << a.x << endl;
+}
+
+class StreamInsertion {
+public:
+int value;
+  StreamInsertion(int val):value{val}{
+  }
+
+  friend istream& operator>>(istream& input, StreamInsertion& obj) {
+	input >> obj.value;
+	return input;
+  }
+  
+}
 int main(int argc, char **argv) {
-	uniform_initialization_main();
+	StaticClass::print();		
 	return 0;
 }
-
-bool isEdge(int N){
-	int a[N][N]={{1,0,0},
-				 {0,0,0},
-				 {0,0,1}};
-
-	for(int i=0;i<N;i++){
-		for(int j=0;j<N;j++){
-			if( ((a[0][0]!=0 && a[N-1][N-1]!=0) && (a[0][0]==a[N-1][N-1])) ||
-				((a[N-1][0]!=0 && a[0][N-1]!=0) && (a[N-1][0]==a[0][N-1]) )){
-				return true;
-			}
-		}
-	}
-	return false;
-}
-
-bool isAdjacent(int N){
-	int a[N][N]={{0,1,0},
-				 {0,0,0},
-				 {0,0,0}};
-
-	for(int i=0;i<N;i++){
-		for(int j=0;j<N;j++){
-			if( (a[i][j] == a[i-1][j]) ||
-				(a[i][j] == a[i+1][j]) ||
-				(a[i][j] == a[i][j-1]  ||
-				(a[i][j] == a[i][j-1]))){
-				return true;
-			}
-		}
-	}
-	return false;
-}
-
-
