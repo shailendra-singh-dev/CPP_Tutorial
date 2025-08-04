@@ -8,7 +8,9 @@
 #include <iostream>
 using namespace std;
 
+
 /**
+ * https://www.geeksforgeeks.org/cpp/const-keyword-in-cpp/
  * NOTES:
 	const member function is used to restrict modification of data members inside function.
  */
@@ -32,6 +34,7 @@ public:
 		this->y = y;
 	}
 	int getY() const {
+		//y =-100; // It will be compile time error. error: assignment of member ‘ConstMember::y’ in read-only object
 		return y;
 	}
 };
@@ -44,4 +47,7 @@ void const_member_function_main(){
 	obj.setY(200);
 	cout << obj.getX() << endl;
 	cout << obj.getY() << endl;
+	int z = obj.getY();
+	z=100;
+	cout << z << endl;
 }
