@@ -9,6 +9,7 @@
 /**
  * POINS:
 	1. A derived class with two base classes and these two base classes have one common base class is called multipath inheritance.
+	https://www.geeksforgeeks.org/cpp/virtual-base-class-in-c/
  */
 
 #include <iostream>
