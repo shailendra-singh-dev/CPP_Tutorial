@@ -12,7 +12,6 @@
 #include <memory>
 using namespace std;
 
-void abstract_factory_method_pattern();
 class A {
 private:
 	int x;
@@ -218,6 +217,12 @@ public:
 	}
 };
 
+class Toy{
+protected:
+	string 
+public:
+
+}
 
 int main(int argc, char **argv) {
 	/**
@@ -238,9 +243,8 @@ int main(int argc, char **argv) {
 	return 0;
 	*/
 
-	//Logger* instance = Logger::getInstance();
-	abstract_factory_method_pattern();
-	return 0;
+	Logger* Logger::instance = nullptr;
+
 }
 
 
