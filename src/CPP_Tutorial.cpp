@@ -13,6 +13,7 @@
 using namespace std;
 
 void abstract_factory_method_pattern();
+void prototype_pattern_cpp() ;
 class A {
 private:
 	int x;
@@ -239,7 +240,8 @@ int main(int argc, char **argv) {
 	*/
 
 	//Logger* instance = Logger::getInstance();
-	abstract_factory_method_pattern();
+	//abstract_factory_method_pattern();
+	prototype_pattern_cpp();
 	return 0;
 }
 
