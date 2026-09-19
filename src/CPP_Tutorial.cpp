@@ -6,14 +6,22 @@
 // Description : Hello World in C++, Ansi-style
 //============================================================================
 
-#include "vector"
+#include <vector>
 #include <iostream>
+#include <algorithm>
 #include <functional>
 #include <memory>
 using namespace std;
 
 void abstract_factory_method_pattern();
 void prototype_pattern_cpp() ;
+void singleton_example();
+void abstract_factory_method_pattern_using_template();
+void test_odd_even_print();
+int get_fruit_frequecy_main(const std::string& fruit);
+void variadic_templates();
+void type_traits_main();
+
 class A {
 private:
 	int x;
@@ -41,18 +49,17 @@ void accessX(A& a){
 	cout << a.x << endl;
 }
 
-struct Sample {
-	int operator()(int x) {
-		return x;
-	}
-} sample;
-
 class MyFunctor {
 public:
 	int operator()(int x) {
 		return x;
 	}
 };
+
+void functor_test(){
+	MyFunctor obj;
+	cout << obj(10) << endl;
+}
 
 auto add = [](int a, int b) {
 	return a + b;
@@ -82,7 +89,7 @@ ostream& operator <<(ostream& output, StreamInsertion& obj) {
 
 void sort_vector(){
 	vector<int> vec {10,20,30,40,50,60,70,80,90,100};
-	std::sort(vec.begin(),vec.end(), [] (int x,int y){
+	sort(vec.begin(),vec.end(), [] (int x,int y){
 		return x> y;
 	});
 	for(const auto it: vec){
@@ -196,6 +203,21 @@ public:
 		cout << "Sample destructor called" << endl;
 	}
 };
+
+void smart_pointers_example() {
+	unique_ptr<SamplePtr> samplePtr = make_unique<SamplePtr>();	
+	SamplePtr* rawPtr = samplePtr.get();
+	cout << "Raw pointer value: " << rawPtr << endl;
+	
+	shared_ptr<SamplePtr> sharedPtr = make_shared<SamplePtr>();
+	cout << "Shared pointer use count: " << sharedPtr.use_count() << endl;
+	shared_ptr<SamplePtr> sharedPtr2 = sharedPtr; // Copying shared pointer
+	cout << "Shared pointer use count after copy: " << sharedPtr.use_count() << endl;
+
+	weak_ptr<SamplePtr> weakPtr(sharedPtr); // Creating a weak pointer
+	cout << "Weak pointer use count: " << weakPtr.use_count() << endl;
+}
+
 class MyFunctorClass{
 public:
 	int operator()(int x) {
@@ -219,31 +241,106 @@ public:
 	}
 };
 
+Logger* Logger::instance = nullptr;
 
-int main(int argc, char **argv) {
-	/**
-	unique_ptr<SamplePtr> samplePtr = make_unique<SamplePtr>();	
-	SamplePtr* rawPtr = samplePtr.get();
-	cout << "Raw pointer value: " << rawPtr << endl;
-	
-	shared_ptr<SamplePtr> sharedPtr = make_shared<SamplePtr>();
-	cout << "Shared pointer use count: " << sharedPtr.use_count() << endl;
-	shared_ptr<SamplePtr> sharedPtr2 = sharedPtr; // Copying shared pointer
-	cout << "Shared pointer use count after copy: " << sharedPtr.use_count() << endl;
+void singleton_example() {
+	Logger* logger1 = Logger::getInstance();
+	logger1->log("This is the first log message.");
 
-	weak_ptr<SamplePtr> weakPtr(sharedPtr); // Creating a weak pointer
-	cout << "Weak pointer use count: " << weakPtr.use_count() << endl;	
-	
-	MyFunctorClass obj;
-	cout << obj(10) << endl;
-	return 0;
-	*/
+	Logger* logger2 = Logger::getInstance();
+	logger2->log("This is the second log message.");
 
-	//Logger* instance = Logger::getInstance();
-	//abstract_factory_method_pattern();
-	prototype_pattern_cpp();
-	return 0;
+	if (logger1 == logger2) {
+		cout << "Both logger instances are the same." << endl;
+	} else {
+		cout << "Logger instances are different." << endl;
+	}
 }
 
+class UniformInitialization {
+public:
+  int x;
+  int y;
+  UniformInitialization(int x, int y) : x(x), y(y) {}  
+};
+
+UniformInitialization print(int x, int y) {
+	return {x ,y };
+}
+
+class X {
+public:
+  int* ptr;
+  X(int x) : ptr(new int(x)) {}
+  ~X(){
+	delete ptr;
+  }
+};
+
+class XX {
+public:
+   int* ptr;
+   XX(int x) : ptr(new int(x)) {}
+   XX (const XX& other) : ptr(new int(*other.ptr)) {
+	 //ptr = new int(*other.ptr);
+   }
+   ~XX(){
+	 delete ptr;
+   }
+};
+
+void test_copy_constructor() {
+	XX obj1(10);
+	XX obj2 = obj1; // Calls the copy constructor
+	cout << "obj1.ptr: " << *obj1.ptr << endl;
+	cout << "obj2.ptr: " << *obj2.ptr << endl;
+}
+
+#include <iostream>
+#include <thread>
+#include <mutex>
+#include <condition_variable>
+using namespace std;
+mutex _mutex;
+condition_variable _condition_variable;
+
+int _count = 0;
+
+void print_odd(){
+	for(;;){
+		unique_lock<mutex> _lock(_mutex);		
+		_condition_variable.wait(_lock, [](){
+			return (_count % 2 == 1);
+		});
+		cout << "From Odd: " << _count << endl;				
+		_count++;
+		_lock.unlock();		
+		_condition_variable.notify_all();		
+	}	
+}
+
+void print_even(){
+	for(;;){
+		unique_lock<mutex> _lock(_mutex);		
+		_condition_variable.wait(_lock, [](){
+			return (_count % 2 == 0);
+		});
+		_count++;
+		cout << "From Even: " << _count << endl;		
+		_lock.unlock();
+		_condition_variable.notify_all();		
+	}
+}
+
+void test_odd_even_print() {
+	thread t1(print_odd);
+	thread t2(print_even);
+	t1.join();
+	t2.join();
+}
+
+int main(int argc, char **argv) {
+	type_traits_main();
+}
 
 

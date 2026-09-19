@@ -35,4 +35,12 @@ A getA(int x, int y){
 void uniform_initialization_main(){
 	A obj= getA(10,20);
 	obj.show();
+
+	// Single initialization syntax using braces.
+	int x{10};
+	double y{5.5};
+	vector<int> v{1,2,3,4};	
+	// Prevents narrowing conversions.
+	int x{3.5};   // Error
+	
 }
